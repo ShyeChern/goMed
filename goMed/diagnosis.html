@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>goMed</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
+    <link rel="stylesheet" type="text/css" href="css/diagnosis.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/cookie.js"></script>
+    <script type="text/javascript" src="js/loader.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("component/header.html");
+            $("#chat").load("component/chat.html");
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="content">
+        <form class="symptomForm">
+            <p class="titleForm">Tick Your Symptom & Diagnos For Potential Symptom</p>
+            <p class="subtitleForm">(The result is just a prediction and may not the actual result)</p>
+
+            <!-- <div class="checkboxForm">
+                <input type="checkbox" id="bloating" name="symptom" value="bloating">
+                <label for="bloating">bloating</label>
+            </div>
+            <div class="checkboxForm">
+                <input type="checkbox" id="cough" name="symptom" value="cough">
+                <label for="cough">cough</label>
+            </div>
+            <div class="checkboxForm">
+                <input type="checkbox" id="sleepy" name="symptom" value="sleepy">
+                <label for="sleepy">sleepy</label>
+            </div>
+            <div class="checkboxForm">
+                <input type="checkbox" id="haha" name="symptom" value="haha">
+                <label for="haha">haha</label>
+            </div> -->
+            <div class="symptomCheckbox">
+
+            </div>
+            <button id="diagnos" class="diagnosBtnForm" type="button">Diagnos</button>
+            <p class="infoForm">*You may suffer from more than one disease at once. </p>
+        </form>
+    </div>
+    <p id="chart-title" class="chartTitle">Potential Disease</p>
+
+    <div id="piechart" class="chart"></div>
+
+    <div id="chat"></div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $.ajax({
+                url: "http://127.0.0.1/goMed/php/displaySymptom.php",
+                type: "POST",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    if (data.result == true) {
+
+                        $.each(data.symptom, function () {
+                            $(".symptomCheckbox").append(
+                                "<div class='checkboxForm'>" +
+                                "<input type='checkbox' id='" + this.symptomId + "' name='symptom' value='" + this.name + "'>" +
+                                "<label for=" + this.symptomId + ">" + this.name + "</label>" +
+                                "</div>");
+                        });
+
+                    }
+                },
+                error: function (data) {
+                    alert(JSON.stringify(data));
+                }
+            });
+
+            $(window).resize(function () {
+                $("#diagnos").click();
+            });
+
+            // make piechart according to the check box
+            $("#diagnos").click(function () {
+
+                $("#chart-title").show();
+
+                // load chart
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(function () {
+
+                    var resultArray = [["Disease", "Percentage"]];
+                    var checkbox = $("input[name=symptom]:checked");
+
+                    if (checkbox.length > 0) {
+                        var checked = [];
+                        checkbox.each(function () {
+                            checked.push($(this).val());
+                        });
+
+                        $.ajax({
+                            url: "http://127.0.0.1/goMed/php/diagnosDisease.php",
+                            type: "POST",
+                            data: { Symptom: checked },
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.result == true) {
+                                    data.disease.forEach(function (item) {
+                                        resultArray.push([item.name, item.percentage]);
+                                    });
+
+                                    var data = google.visualization.arrayToDataTable(resultArray);
+
+                                    var options = {
+                                        backgroundColor: 'transparent',
+                                        height: 400,
+                                        width: '70%',
+                                        legend: {
+                                            alignment: 'center',
+                                            position: 'top'
+                                        },
+                                        chartArea: {
+                                            backgroundColor: 'transparent',
+                                            height: 300
+                                        },
+                                        tooltip: {
+                                            text: "percentage"
+                                        }
+                                    }
+
+                                    var chart = new google.visualization.PieChart($("#piechart")[0]);
+                                    chart.draw(data, options);
+
+
+                                }
+                            },
+                            error: function (data) {
+                                alert(JSON.stringify(data));
+                            }
+                        });
+                    }
+                    else {
+                        $("#piechart").html("<p style='font-style:italic;'>Please select your symptom</p>")
+                    }
+
+
+                });
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

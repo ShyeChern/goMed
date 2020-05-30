@@ -1,0 +1,76 @@
+<!-- <div
+    style="position: fixed; bottom: 0; right: 0; width: 25%; background-color: aliceblue;border-width: 1px;border-style: solid;">
+    <div id="chat-title" style="cursor: pointer;">
+        <h3 style="text-align: center; font-size: 1.5vw;">Chat with Patient</h3>
+    </div>
+    <div id="message-box" style="display: none;">
+        <hr />
+        <p id="current-date" style="text-align: center;margin:0; font-size: 1vw; font-style: italic;"></p>
+        <div id="message-list" style="height:300px;overflow:auto;font-size: 1.2vw;">
+           
+        </div>
+        <form>
+            <textarea id="send-message" style="resize: none;font-size: 1.2vw; width: 100%; padding: 10px;" rows="1"
+                placeholder="Type your message here..."></textarea>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        
+        var allMessage;
+
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Ju", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        const date = new Date();
+        $("#current-date").text(date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear());
+
+        $("#chat-title").click(function () {
+            if ($("#message-box").is(":visible")) {
+                $("#message-box").hide();
+            }
+            else {
+                $("#message-box").show();
+                $('#message-list').scrollTop($('#message-list').prop("scrollHeight"));
+            }
+
+        });
+
+        $("#send-message").keypress(function (e) {
+            if (e.which == 13 && !e.shiftKey) {
+                alert($("#send-message").val());
+                console.log(window.currentConsultation);
+                $("#send-message").val("");
+                $('#message-list').scrollTop($('#message-list').prop("scrollHeight"));
+                e.preventDefault();
+            }
+        });
+
+        function updateMessage() {
+            var elements = "";
+            $.each(allMessage, function () {
+                if (this.doctorId != null) {
+                    elements += "<div class='message' style='margin-left:25px; margin-right:10px; text-align: end;background-color: #f6f1ff;'>" +
+                        "<p style='font-weight:bold;'>(You) Doctor " + this.doctorId + "</p>" +
+                        "<p>" + this.message + "</p>" +
+                        "</div>";
+                }
+                else {
+                    elements += "<div style='margin-left:10px; margin-right: 25px; text-align: start;'>" +
+                        "<p style='font-weight:bold;'>Doctor " + this.visitorId + "</p>" +
+                        "<p>" + this.message + "</p>" +
+                        "</div>";
+                }
+            });
+
+
+            $("#message-list").html(elements);
+            $('#message-list').scrollTop($('#message-list').prop("scrollHeight"));
+        }
+        
+
+    });
+
+</script> -->

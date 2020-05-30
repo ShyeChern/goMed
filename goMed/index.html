@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>goMed</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/cookie.js"></script>
+    <script>
+        $(function () {
+            $("#header").load("component/header.html");
+            $("#chat").load("component/chat.html");
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="content">
+        <h1 class="title">goMed</h1>
+        <p class="subtitle">Check & Consult With Us</p>
+        <form id="search-disease-form">
+            <input id="disease-input" class="searchDiseaseInput" type="text" placeholder="Search for disease" />
+            <button type="submit" class="searchDiseaseSubmit">Search</button>
+        </form>
+    </div>
+    <div id="chat"></div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#search-disease-form").submit(function (e) {
+                window.location.href = "disease.html?disease=" + $("#disease-input").val();
+                e.preventDefault();
+            });
+
+        });
+
+        //image left?
+
+    </script>
+</body>
+
+</html>

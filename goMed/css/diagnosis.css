@@ -1,0 +1,31 @@
+.titleForm {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.subtitleForm {
+    font-style: italic;
+    margin-top: 0;
+}
+
+.diagnosBtnForm {
+    display: block;
+    margin: 10px auto;
+}
+
+.infoForm {
+    font-style: italic;
+    margin-top: 0;
+}
+
+.chartTitle {
+    display: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+.chart {
+    width: 70%;
+    text-align: center;
+    margin: auto;
+}

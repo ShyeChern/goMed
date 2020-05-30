@@ -1,0 +1,13 @@
+.content {
+    margin: 10px auto;
+    text-align: center;
+}
+
+.instruction {
+    font-style: italic;
+}
+
+.iframe {
+    width: 70%;
+    height: 400px;
+}

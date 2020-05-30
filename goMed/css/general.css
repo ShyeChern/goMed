@@ -1,0 +1,96 @@
+body {
+    height: 100%;
+    background-image: linear-gradient(141deg, rgba(195, 222, 208, 0.3) 0%, rgba(60, 230, 250, 0.5) 51%, rgba(48, 200, 255, 0.6) 75%);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* background-image: radial-gradient(rgba(195, 222, 208,0.3) 0%, rgba(60, 230, 250,0.5) 51%, rgba(48, 200, 255,0.6) 75%); */
+}
+
+button {
+    background-color: aliceblue;
+    border-color: lightblue;
+    border-width: 2px;
+    outline: none;
+    border-radius: 50px;
+    padding: 7px 27px;
+}
+
+input {
+    background-color: aliceblue;
+}
+
+.warning {
+    font-style: italic;
+    text-align: center;
+    display: none;
+}
+
+.diseaseList {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.diseaseItem {
+    text-decoration: none;
+    color: black;
+    font-size: 1.1vw;
+    margin: 3px;
+}
+
+.diseaseItemContainer {
+    position: relative;
+    border-width: 1px;
+    color: black;
+    border-style: solid;
+    background-color: aliceblue;
+    border-radius: 25px;
+    overflow: auto;
+    margin: auto;
+    clear: both
+}
+
+.diseaseImage {
+    float: left;
+    margin-right: 20px;
+}
+
+.diseaseInfo {
+    display: block;
+    flex-wrap: wrap;
+    overflow: auto;
+    margin-right: 20px;
+}
+
+.diseaseDescription {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.diseaseDetail {
+    color: gray;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    vertical-align: bottom;
+    text-align: right;
+    margin-right: 15px;
+    font-style: italic;
+}
+
+.content {
+    text-align: center;
+}
+
+.symptomForm {
+    margin: 10px auto;
+    width: 70%;
+    font-size: 20px;
+}
+
+.checkboxForm {
+    display: inline-block;
+    padding: 5px;
+}

@@ -1,0 +1,29 @@
+.content {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.listItem {
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px auto;
+}
+
+.consultationName {
+    margin-left: 20px;
+    font-size: 1.3vw;
+}
+
+.acceptConsultationBtn {
+    margin-right: 20px;
+}
+
+.unreadBullet {
+    color: red;
+}
+
+.viewEndConsultation {
+    margin-right: 20px;
+    height: 100%;
+}

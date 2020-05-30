@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>goMed</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="content">
+        <h1 class="title">goMed</h1>
+        <p class="subtitle">Admin Login</p>
+        <p id="warning" class="warning">warning_text</p>
+        <form id="login-form">
+            <input id="admin-login-username" class="loginInput" type="text" placeholder="Username" />
+            <input id="admin-login-password" class="loginInput" type="password" placeholder="Password" />
+            <button class="loginBtn" type="submit">Login</button>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            // check session if exist str8 go to menu
+
+            $("#login-form").submit(function (e) {
+
+                if (!($("#admin-login-username").val() && $("#admin-login-password").val())) {
+                    $("#warning").css("visibility", "visible");
+                    $("#warning").text("Please input your login detail");
+                    e.preventDefault();
+                    return;
+                }
+                else {
+                    $("#warning").css("visibility", "hidden");
+
+                    $.ajax({
+                        url: "http://127.0.0.1/goMed/admin/php/adminLogin.php",
+                        type: "POST",
+                        data: { AdminUsername: $("#admin-login-username").val(), AdminPassword: $("#admin-login-password").val() },
+                        dataType: "json",
+                        success: function (data) {
+                            if(data.result==true){
+                                sessionStorage.setItem("adminId", data.adminId);
+                                window.location.href = "viewDoctor.html";
+                            }
+                            else{
+                                $("#warning").css("visibility", "visible");
+                                $("#warning").text("Wrong username or password");
+                            }
+                        },
+                        error: function (data) {
+                            alert(JSON.stringify(data));
+                        }
+                    });
+
+                    $(this).closest('form').find("input").val("");
+
+                    e.preventDefault();
+                    
+                }
+
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
