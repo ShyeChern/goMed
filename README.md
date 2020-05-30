@@ -1,2 +1,2 @@
 # goMed
-A Telemedicine Web Application
+A Telemedicine Web Application (HTML + CSS + Javascript + PHP)
