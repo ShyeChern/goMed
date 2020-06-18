@@ -1,0 +1,24 @@
+.content {
+    border-width: 1px;
+    color: black;
+    border-style: solid;
+    width: 60%;
+    margin: 50px auto;
+}
+
+.diseaseContent {
+    margin: 20px;
+}
+
+.diseaseLabelAlign {
+    text-align: right;
+}
+
+.diseaseLabel {
+    font-weight: bold;
+}
+
+.diseaseLabelDescription {
+    text-align: justify;
+    padding: 15px;
+}
