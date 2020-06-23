@@ -76,7 +76,7 @@
         $(document).ready(function () {
 
             $.ajax({
-                url: "http://127.0.0.1/goMed/admin/php/viewDoctor.php",
+                url: "https://gomed.azurewebsites.net/admin/php/viewDoctor.php",
                 type: "POST",
                 data: {},
                 dataType: "json",
@@ -103,7 +103,7 @@
                 $("#doctor-id").text($(this).attr('id'));
 
                 $.ajax({
-                    url: "http://127.0.0.1/goMed/admin/php/viewDoctorDetail.php",
+                    url: "https://gomed.azurewebsites.net/admin/php/viewDoctorDetail.php",
                     type: "POST",
                     data: { DoctorId: $(this).attr('id') },
                     dataType: "json",
@@ -138,7 +138,7 @@
                                 "<tr>" +
                                 "<td>Certificate:</td>" +
                                 "<td><a style='font-style:italic' "+
-                                "href='http://127.0.0.1/goMed/admin/php/downloadDoctorCertificate.php?certificateId=" +
+                                "href='https://gomed.azurewebsites.net/admin/php/downloadDoctorCertificate.php?certificateId=" +
                                 data.doctorDetail.certificateId + "'>Click to download certificate</a></td>" +
                                 "</tr>");
                         }
@@ -165,7 +165,7 @@
 
             $("#delete-doctor-btn").click(function () {
                 $.ajax({
-                    url: "http://127.0.0.1/goMed/admin/php/deleteDoctor.php",
+                    url: "https://gomed.azurewebsites.net/admin/php/deleteDoctor.php",
                     type: "POST",
                     data: { DoctorId: $("#doctor-id").text() },
                     dataType: "json",

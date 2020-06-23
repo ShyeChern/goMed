@@ -2,10 +2,11 @@
 
 include("accessControl.php");
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "gomed123.mysql.database.azure.com";
+$username = "gomedroot@gomed123";
+$password = "goMed123";
 $dbname = "gomed";
+
 
 try {
    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

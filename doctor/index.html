@@ -42,7 +42,7 @@
                     $("#warning").css("visibility", "hidden");
 
                     $.ajax({
-                        url: "http://127.0.0.1/goMed/doctor/php/doctorLogin.php",
+                        url: "https://gomed.azurewebsites.net/doctor/php/doctorLogin.php",
                         type: "POST",
                         data: { DoctorEmail: $("#doctor-login-email").val(), DoctorPassword: $("#doctor-login-password").val() },
                         dataType: "json",

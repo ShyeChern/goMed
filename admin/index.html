@@ -44,7 +44,7 @@
                     $("#warning").css("visibility", "hidden");
 
                     $.ajax({
-                        url: "http://127.0.0.1/goMed/admin/php/adminLogin.php",
+                        url: "https://gomed.azurewebsites.net/admin/php/adminLogin.php",
                         type: "POST",
                         data: { AdminUsername: $("#admin-login-username").val(), AdminPassword: $("#admin-login-password").val() },
                         dataType: "json",

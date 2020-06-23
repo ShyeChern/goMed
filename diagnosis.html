@@ -60,7 +60,7 @@
         $(document).ready(function () {
 
             $.ajax({
-                url: "http://127.0.0.1/goMed/php/displaySymptom.php",
+                url: "https://gomed.azurewebsites.net/php/displaySymptom.php",
                 type: "POST",
                 data: {},
                 dataType: "json",
@@ -105,7 +105,7 @@
                         });
 
                         $.ajax({
-                            url: "http://127.0.0.1/goMed/php/diagnosDisease.php",
+                            url: "https://gomed.azurewebsites.net/php/diagnosDisease.php",
                             type: "POST",
                             data: { Symptom: checked },
                             dataType: "json",

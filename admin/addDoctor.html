@@ -109,7 +109,7 @@
                     formData.append('Certificate', $('#certificate')[0].files[0]);
 
                     $.ajax({
-                        url: "http://127.0.0.1/goMed/admin/php/addDoctor.php",
+                        url: "https://gomed.azurewebsites.net/admin/php/addDoctor.php",
                         enctype: 'multipart/form-data',
                         type: "POST",
                         data: formData,

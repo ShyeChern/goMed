@@ -83,9 +83,8 @@
                 e.preventDefault();
             }
         });
-
         $.ajax({
-            url: "http://127.0.0.1/goMed/php/checkMessage.php",
+            url: "https://gomed.azurewebsites.net/php/checkMessage.php",
             type: "POST",
             data: { VisitorId: visitorId },
             dataType: "json",
@@ -103,7 +102,7 @@
 
         function sendMessage() {
             $.ajax({
-                url: "http://127.0.0.1/goMed/php/sendMessage.php",
+                url: "https://gomed.azurewebsites.net/php/sendMessage.php",
                 type: "POST",
                 data: { Message: $("#send-message").val(), VisitorId: visitorId },
                 dataType: "json",
@@ -122,7 +121,7 @@
         function readMessage() {
             window.setInterval(function () {
                 $.ajax({
-                    url: "http://127.0.0.1/goMed/php/readMessage.php",
+                    url: "https://gomed.azurewebsites.net/php/readMessage.php",
                     type: "POST",
                     data: { VisitorId: visitorId },
                     dataType: "json",

@@ -108,7 +108,7 @@
                 var allMessage;
 
                 $.ajax({
-                    url: "http://127.0.0.1/goMed/doctor/php/checkConsultation.php",
+                    url: "https://gomed.azurewebsites.net/doctor/php/checkConsultation.php",
                     type: "POST",
                     data: { DoctorId: sessionStorage.getItem("doctorId") },
                     dataType: "json",
@@ -140,7 +140,7 @@
 
                 $('div').on('click', '.accept-consultation-btn', function () {
                     $.ajax({
-                        url: "http://127.0.0.1/goMed/doctor/php/acceptConsultation.php",
+                        url: "https://gomed.azurewebsites.net/doctor/php/acceptConsultation.php",
                         type: "POST",
                         data: { DoctorId: sessionStorage.getItem("doctorId"), VisitorId: $(this).attr('id') },
                         dataType: "json",
@@ -169,7 +169,7 @@
                 $('div').on('click', '.end-chat-btn', function () {
 
                     $.ajax({
-                        url: "http://127.0.0.1/goMed/doctor/php/endConsultation.php",
+                        url: "https://gomed.azurewebsites.net/doctor/php/endConsultation.php",
                         type: "POST",
                         data: { DoctorId: sessionStorage.getItem("doctorId"), VisitorId: $(this).attr('id') },
                         dataType: "json",
@@ -217,7 +217,7 @@
 
                 function sendMessage() {
                     $.ajax({
-                        url: "http://127.0.0.1/goMed/doctor/php/sendMessage.php",
+                        url: "https://gomed.azurewebsites.net/doctor/php/sendMessage.php",
                         type: "POST",
                         data: { Message: $("#send-message").val(), VisitorId: currentConsultation, DoctorId: sessionStorage.getItem("doctorId") },
                         dataType: "json",
@@ -237,7 +237,7 @@
                 function readMessage() {
                     window.setInterval(function () {
                         $.ajax({
-                            url: "http://127.0.0.1/goMed/doctor/php/readMessage.php",
+                            url: "https://gomed.azurewebsites.net/doctor/php/readMessage.php",
                             type: "POST",
                             data: { DoctorId: sessionStorage.getItem("doctorId"), VisitorId: currentConsultation },
                             dataType: "json",
